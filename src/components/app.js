@@ -36,6 +36,14 @@ export default React.createClass({
     this.setState({todos: todos});
   },
   
+  toggleTodo: function(index) {
+    var todos= this.state.todos;
+    todos[index].done = !todos[index].done;
+    this.setState({
+      todos: todos
+    });
+  },
+  
   render: function () {
     return (
       <div>
@@ -44,6 +52,7 @@ export default React.createClass({
           tagline="Get 'em todone."
         />
         <TodoList
+          onTodoClick={this.toggleTodo}
           todos= {this.state.todos}
         />
         <TodoInput 
